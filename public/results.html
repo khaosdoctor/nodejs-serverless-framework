@@ -9,18 +9,19 @@
 </head>
 <body>
 <h1 class="title has-text-centered m-5">Resultados</h1>
-<h2 class="subtitle has-text-centered mt-4">Você acertou</h2>
+<h2 class="subtitle has-text-centered mt-4"><span id="student-name"></span>, você acertou</h2>
 <h1 class="title has-text-centered mt-4">
-  <span class="correct"></span>
-  <span> / </span>
-  <span class="total">4</span>
+  <span id="correct"></span>
+  <span> de um total de </span>
+  <span id="total">4 perguntas</span>
 </h1>
 <div class="field has-text-centered mt-5">
   <p class="control">
-    <button type="button" class="button is-info">
+    <a href="index.html" class="button is-info">
       Tentar novamente
-    </button>
+    </a>
   </p>
 </div>
+<script src="js/results.js"></script>
 </body>
 </html>

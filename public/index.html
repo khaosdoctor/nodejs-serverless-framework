@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="css/main.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-index="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atividade de curso</title>
 </head>
 <body>
@@ -16,107 +16,107 @@
       </div>
     </section>
 
-    <section class="field mt-5 mb-5">
-      <label class="label">Digite seu email</label>
+    <section class="container field mt-5 mb-5">
+      <label class="label">Digite seu nome</label>
       <div class="control has-icons-left">
-        <input class="input" type="email" placeholder="seu@email.com">
+        <input required class="input" name="student-name" type="text" placeholder="John Appleseed">
         <span class="icon is-small is-left has-text-info">
-          <i class="fas fa-envelope"></i>
+          <i class="fas fa-user"></i>
         </span>
     </section>
 
-    <form action="#" class="form m-2 p-5">
+    <form class="form m-2 p-5">
 
-      <div class="question">
+      <div class="uestion">
         <div class="field">
           <label for="" class="label">O que é a arquitetura serverless?</label>
           <div class="control mb-3 radio-control">
             <label class="radio">
-              <input type="radio" name="q-1" data-index="0">
+              <input required type="radio" name="1" value="0">
               É uma arquitetura que prega a criação de aplicações sem a necessidade de ter um servidor.
             </label>
             <label class="radio">
-              <input type="radio" name="q-1" data-index="1">
+              <input required type="radio" name="1" value="1">
               É uma arquitetura que prega a remoção dos servidores a favor dos bancos de dados.
             </label>
             <label class="radio">
-              <input type="radio" name="q-1" data-index="2">
+              <input required type="radio" name="1" value="2">
               É uma arquitetura que prega a utilização apenas de funções para a criação de aplicações.
             </label>
             <label class="radio">
-              <input type="radio" name="q-1" data-index="3">
+              <input required type="radio" name="1" value="3">
               É a abstração da lógica da aplicação para funções que são executadas em um servidor que não é gerenciado por quem desenvolve.
             </label>
           </div>
         </div>
       </div>
 
-      <div class="question">
+      <div class="uestion">
         <div class="field">
           <label for="" class="label">Qual dessas opções <strong>não</strong> é uma vantagem da arquitetura serverless?</label>
           <div class="control mb-3 radio-control">
             <label class="radio">
-              <input type="radio" name="q-2" data-index="0">
+              <input required type="radio" name="2" value="0">
               Não é necessário gerenciar servidores.
             </label>
             <label class="radio">
-              <input type="radio" name="q-2" data-index="1">
+              <input required type="radio" name="2" value="1">
               Vendor lock-in.
             </label>
             <label class="radio">
-              <input type="radio" name="q-2" data-index="2">
+              <input required type="radio" name="2" value="2">
               Funções simples e diretas.
             </label>
             <label class="radio">
-              <input type="radio" name="q-2" data-index="3">
+              <input required type="radio" name="2" value="3">
               Não se paga por computação ociosa.
             </label>
           </div>
         </div>
       </div>
 
-      <div class="question">
+      <div class="uestion">
         <div class="field">
           <label for="" class="label">Qual é o nome do framework utilizado para facilitar a criação de aplicações serverless?</label>
           <div class="control mb-3 radio-control">
             <label class="radio">
-              <input type="radio" name="q-3" data-index="0">
+              <input required type="radio" name="3" value="0">
               Serverless.
             </label>
             <label class="radio">
-              <input type="radio" name="q-3" data-index="1">
+              <input required type="radio" name="3" value="1">
               Lambda.
             </label>
             <label class="radio">
-              <input type="radio" name="q-3" data-index="2">
+              <input required type="radio" name="3" value="2">
               Azure Functions.
             </label>
             <label class="radio">
-              <input type="radio" name="q-3" data-index="3">
+              <input required type="radio" name="3" value="3">
               Nanosservices.
             </label>
           </div>
         </div>
       </div>
 
-      <div class="question">
+      <div class="uestion">
         <div class="field">
           <label for="" class="label">Qual é o problema que enfrentamos quando temos estados em serverless?</label>
           <div class="control mb-3 radio-control">
             <label class="radio">
-              <input type="radio" name="q-4" data-index="0">
+              <input required type="radio" name="4" value="0">
               Estados são compartilhados entre as funções.
             </label>
             <label class="radio">
-              <input type="radio" name="q-4" data-index="1">
+              <input required type="radio" name="4" value="1">
               O estado gera um cache local em cada função que é mantido para a próxima.
             </label>
             <label class="radio">
-              <input type="radio" name="q-4" data-index="2">
+              <input required type="radio" name="4" value="2">
               Serverless é stateless. A cada execução a função perde o estado completamente.
             </label>
             <label class="radio">
-              <input type="radio" name="q-4" data-index="3">
+              <input required type="radio" name="4" value="3">
               O estado é guardado em um banco de dados e precisa ser constantemente acessado.
             </label>
           </div>
@@ -139,5 +139,6 @@
     </form>
   </main>
 
+  <script src="./js/index.js"></script>
 </body>
 </html>
