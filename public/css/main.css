@@ -1,0 +1,23 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css";
+
+.form {
+  border: 2px solid rgb(236, 236, 236);
+  border-radius: 4px;
+}
+
+.question {
+  border-bottom: 1px solid rgba(155, 155, 155, 0.455);
+  margin-bottom: 10px;
+}
+
+.radio-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.radio {
+  margin-left: 0 !important;
+  margin-top: 5px;
+}
