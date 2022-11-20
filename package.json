@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -e js,html,mjs api.mjs "
+    "dev": "nodemon -e js,html,mjs index.mjs",
+    "start": "node index.mjs"
   },
   "repository": {
     "type": "git",
