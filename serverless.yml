@@ -1,0 +1,37 @@
+org: khaosdoctor
+app: alura-serverless
+service: api
+frameworkVersion: '3'
+
+params:
+  dev:
+    connectionString: mongodb://localhost:27017/alura-serverless
+    dbName: alura-serverless
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    MONGODB_CONNECTIONSTRING: ${param:connectionString}
+    MONGODB_DB_NAME: ${param:dbName}
+
+functions:
+  sendResponse:
+    handler: api/handlers.sendResponse
+    events:
+      - httpApi:
+          path: /api/results
+          method: post
+          # Validação de schema para o body da requisição
+          # request:
+            # schemas:
+              # application/json: ${file(./schemas/sendResponse.json)}
+  getResult:
+    handler: api/handlers.getResult
+    events:
+      - httpApi:
+          path: /api/results/{id}
+          method: get
+
+plugins:
+  - serverless-offline
