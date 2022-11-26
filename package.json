@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -e js,html,mjs index.mjs",
-    "start": "node index.mjs"
+    "dev": "npx serverless offline -p 3000",
+    "start": "npx concurrently \"npx serverless offline -p 3000\" \"npx http-server ./interface -p 8000\""
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,12 @@
   "homepage": "https://github.com/khaosdoctor/nodejs-serverless-framework#readme",
   "devDependencies": {
     "@types/node": "^18.11.9",
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20",
-    "serverless": "^3.24.1"
+    "serverless": "^3.25.0",
+    "serverless-offline": "^11.6.0"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "mongodb": "^4.12.1"
   }
 }
