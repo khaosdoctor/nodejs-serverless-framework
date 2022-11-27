@@ -1,5 +1,9 @@
 const $ = document.querySelector.bind(document)
 
+if (!window.localStorage.getItem('token')) {
+  window.location.href = '/login.html'
+}
+
 $('form').addEventListener('submit', async (e) => {
   e.preventDefault()
   const data = {
@@ -23,11 +27,12 @@ $('form').addEventListener('submit', async (e) => {
     data.answers[Number(answer.name) - 1] = Number(answer.value)
   })
 
-  const response = await fetch('/api/results', {
+  const response = await fetch('http://localhost:3000/api/results', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${window.localStorage.getItem('token')}`
     }
   })
 

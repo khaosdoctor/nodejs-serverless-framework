@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Alura Serverless - Login</title>
+</head>
+<body>
+  <main class="columns has-text-centered mt-5">
+
+    <div class="column is-2 is-offset-5 has text-centered">
+      <section class="header title"><h1>Login</h1></section>
+      <div class="control">
+        <div class="field">
+          <label class="label">Usuário</label>
+          <div class="control has-icons-left">
+            <input class="input" name="username"" type="text" placeholder="Digite seu nome de usuário" value="">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Senha</label>
+          <div class="control has-icons-left">
+            <input class="input" name="password"" type="password" placeholder="Digite sua senha" value="">
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+        </div>
+        <div class="buttons has-text-centered is-flex is-flex-direction-row is-align-items-center is-justify-content-space-around">
+          <button id="submit" type="button" class="button is-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="./js/login.js"></script>
+</body>
+</html>
