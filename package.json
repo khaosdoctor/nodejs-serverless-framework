@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx serverless offline -p 3000",
+    "dev": "npx serverless offline",
     "start": "npx concurrently \"npx serverless offline -p 3000\" \"npx http-server ./interface -p 8000\""
   },
   "repository": {
