@@ -1,5 +1,6 @@
 'use strict'
 const { pbkdf2Sync } = require('crypto')
+const { sign } = require('jsonwebtoken')
 const { MongoClient, ObjectId } = require('mongodb')
 
 const connectionInstance = null
@@ -24,24 +25,8 @@ function extractBody(event) {
   return JSON.parse(event.body)
 }
 
-async function basicAuth(event) {
-  const { authorization } = event.headers
-  if (!authorization) {
-    return {
-      statusCode: 401,
-      body: JSON.stringify({ error: 'Missing authorization header' })
-    }
-  }
-
-  const [type, credentials] = authorization.split(' ')
-  if (type !== 'Basic') {
-    return {
-      statusCode: 401,
-      body: JSON.stringify({ error: 'Invalid authorization type' })
-    }
-  }
-
-  const [username, password] = Buffer.from(credentials, 'base64').toString().split(':')
+module.exports.login = async (event) => {
+  const { username, password } = extractBody(event)
   const hashedPass = pbkdf2Sync(password, process.env.SALT, 100000, 64, 'sha512').toString('hex')
 
   const client = await connectToDatabase()
@@ -55,9 +40,17 @@ async function basicAuth(event) {
     }
   }
 
+  const token = sign({ username, id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: '24h',
+    audience: 'alura-serverless'
+  })
+
   return {
-    id: user._id,
-    username: user.username
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ token })
   }
 }
 

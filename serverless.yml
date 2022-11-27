@@ -9,6 +9,7 @@ params:
   dev:
     connectionString: mongodb://localhost:27017/${self:params.default.dbName}
     salt: SJxV9oNKRtEks8un3W3jUZSkHwrxBOdZ
+    jwtSecret: UkBN0me9JRvODL8Olb9iszmWxuOYt74OJEeTfFtiajbTScOGL6iFcMjepagitemzj4DqbHtKV6JokQpdZg8u96EHRUklWoQV3HjSm2PlQdC8hekOlSUWZPTjcMn8DvHdFwkkG7FC63N9yRnHQwAPNuNXNWZfoXlZZNbwirr2t7LLUV5rw9uE8CBEghVQt1KWH9284t5RxmVBtDpSSOs3rITMj6Sh8L9m2tu0KwGszdH45Scl2rce4RIS9Qr8fYS3
   prod:
 
 provider:
@@ -18,6 +19,7 @@ provider:
   environment:
     MONGODB_CONNECTIONSTRING: ${param:connectionString}
     MONGODB_DB_NAME: ${param:dbName}
+    JWT_SECRET: ${param:jwtSecret}
     SALT: ${param:salt}
 
 functions:
@@ -37,6 +39,16 @@ functions:
       - httpApi:
           path: /api/results/{id}
           method: get
+
+  login:
+    handler: api/handlers.login
+    events:
+      - httpApi:
+          path: /api/login
+          method: post
+          request:
+            schemas:
+              application/json: ${file(./api/schemas/login.json)}
 
 plugins:
   - serverless-offline
