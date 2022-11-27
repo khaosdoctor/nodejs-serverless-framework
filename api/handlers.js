@@ -1,6 +1,6 @@
 'use strict'
 const { pbkdf2Sync } = require('crypto')
-const { sign } = require('jsonwebtoken')
+const { sign, verify } = require('jsonwebtoken')
 const { MongoClient, ObjectId } = require('mongodb')
 
 const connectionInstance = null
@@ -23,6 +23,34 @@ function extractBody(event) {
   }
 
   return JSON.parse(event.body)
+}
+
+async function authorize(event) {
+  const { authorization } = event.headers
+  if (!authorization) {
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ error: 'Missing authorization header' })
+    }
+  }
+
+  const [scheme, token] = authorization.split(' ')
+  if (scheme !== 'Bearer' || !token) {
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ error: 'Invalid authorization scheme' })
+    }
+  }
+
+  const decodedToken = verify(token, process.env.JWT_SECRET, { audience: 'alura-serverless' })
+  if (!decodedToken) {
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ error: 'Invalid token' })
+    }
+  }
+
+  return decodedToken
 }
 
 module.exports.login = async (event) => {
@@ -55,9 +83,10 @@ module.exports.login = async (event) => {
 }
 
 module.exports.sendResponse = async (event) => {
-  const authResult = await basicAuth(event)
+  const authResult = await authorize(event)
   if (authResult.statusCode === 401) return authResult
 
+  console.log(authResult)
   const correctAnswers = [3, 1, 0, 2]
   const { name, answers } = extractBody(event)
   const totalCorrectAnswers = answers.reduce((acc, answer, index) => {
@@ -92,7 +121,7 @@ module.exports.sendResponse = async (event) => {
 }
 
 module.exports.getResult = async (event) => {
-  const authResult = await basicAuth(event)
+  const authResult = await authorize(event)
   if (authResult.statusCode === 401) return authResult
 
   const client = await connectToDatabase()
