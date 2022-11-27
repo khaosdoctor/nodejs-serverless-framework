@@ -4,13 +4,16 @@ service: api
 frameworkVersion: '3'
 
 params:
-  dev:
-    connectionString: mongodb://localhost:27017/alura-serverless
+  default:
     dbName: alura-serverless
+  dev:
+    connectionString: mongodb://localhost:27017/${self:params.default.dbName}
+  prod:
 
 provider:
   name: aws
   runtime: nodejs14.x
+  region: eu-west-1
   environment:
     MONGODB_CONNECTIONSTRING: ${param:connectionString}
     MONGODB_DB_NAME: ${param:dbName}
