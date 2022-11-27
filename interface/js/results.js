@@ -22,7 +22,6 @@ fetch(`http://localhost:3000/api/results/${resultId}`, {
     return r.json()
   })
   .then((result) => {
-    console.log(result)
     document.getElementById('student-name').innerText = result.name
     document.getElementById('correct').innerText = result.totalCorrectAnswers
   })

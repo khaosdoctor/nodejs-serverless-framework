@@ -86,7 +86,6 @@ module.exports.sendResponse = async (event) => {
   const authResult = await authorize(event)
   if (authResult.statusCode === 401) return authResult
 
-  console.log(authResult)
   const correctAnswers = [3, 1, 0, 2]
   const { name, answers } = extractBody(event)
   const totalCorrectAnswers = answers.reduce((acc, answer, index) => {
