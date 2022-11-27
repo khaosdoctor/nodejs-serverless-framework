@@ -6,22 +6,24 @@ Este projeto tem como objetivo guiar seu aprendizado durante o curso, e para iss
 
 Além disso, existem dois branches: `completo-vm` e `completo-serverless`, cada um com sua própria documentação, que contém os códigos completos do projeto em cada um dos ambientes que ele está rodando.
 
+> **Atenção**: É importante que você utilize a versão 16 do Node.js. Se você utiliza o [ASDF](https://asdf-vm.com/#/), você pode instalar a versão 16 com o comando `asdf install` na pasta já que temos a configuração no arquivo `.tool-versions`. Se você está usando [NVM](https://github.com/nvm-sh/nvm), você pode instalar a versão 16 com o comando `nvm use`.
+
 ## Executando localmente
 
 O projeto foi feito da forma mais simples possível para facilitar o uso. Não foram usados nenhum framework ou biblioteca para o front-end.
 
-Todo o projeto roda a partir do arquivo `index.mjs`, que é o arquivo principal do projeto. Para executá-lo, basta rodar o comando:
-
-```bash
-node index.mjs
-```
-
-Ou se preferir, você pode usar o [nodemon](https://www.npmjs.com/package/nodemon) para executar o projeto:
+O projeto roda simultaneamente localmente e no ambiente do AWS lambda. Você pode executar a API offline usando o comando:
 
 ```bash
 npm run dev
 ```
 
-Isso vai garantir que você não precise ficar reiniciando o servidor a cada alteração que fizer. Todo o front-end da aplicação está na pasta `interface`, toda a API da aplicação está dentro do arquivo `index.mjs`.
+Ou, você pode rodar localmente tanto a interface quanto a API usando o comando:
 
-Depois de executar o projeto, você pode acessar a aplicação em `http://localhost:3000`.
+```bash
+npm start
+```
+
+Depois de executar o projeto, você pode acessar a aplicação em `http://localhost:8000` e a api estará disponível em `http://localhost:3000`.
+
+> __Importante__: As variáveis de ambiente do curso não estão setadas no projeto para o deploy na AWS, para isso você precisa seguir os passos no curso e criar os parâmetros para o ambiente de produção, os parâmetros para desenvolvimento estão setados no arquivo `serverless.yml`.
