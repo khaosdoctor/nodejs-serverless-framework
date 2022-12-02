@@ -44,7 +44,7 @@ app.get('/api/results/:id', (req, res) => {
   res.json(result)
 })
 
-app.use(express.static(join(__dirname, 'public')))
+app.use(express.static(join(__dirname, 'interface')))
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server started')
 })
